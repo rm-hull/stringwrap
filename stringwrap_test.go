@@ -141,8 +141,12 @@ func TestStringWrap(t *testing.T) {
 	for idx, tt := range tests {
 		t.Run(fmt.Sprintf("Wrapped String Test %d", idx+1), func(t *testing.T) {
 			wrapped, seq, err := wrapString(tt)
+			expectedLines := 0
+			if wrapped != "" {
+				expectedLines = len(strings.Split(wrapped, "\n"))
+			}
 			assert.Nil(t, err)
-			assert.Equal(t, len(seq.WrappedLines), len(strings.Split(wrapped, "\n")))
+			assert.Equal(t, expectedLines, len(seq.WrappedLines))
 			assert.Equal(t, tt.wrapped, wrapped)
 		})
 	}
