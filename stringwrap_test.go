@@ -129,6 +129,13 @@ func TestStringWrap(t *testing.T) {
 			trimWhitespace: true,
 			splitWord:      true,
 		},
+		{
+			input:          "",
+			wrapped:        "",
+			limit:          5,
+			trimWhitespace: true,
+			splitWord:      true,
+		},
 	}
 
 	for idx, tt := range tests {
